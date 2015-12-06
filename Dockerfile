@@ -5,8 +5,8 @@ ENV JRUBY_VERSION="9.0.4.0" \
 
 RUN echo 'http://alpine.gliderlabs.com/alpine/v3.2/main' > /etc/apk/repositories && \
     echo 'http://alpine.gliderlabs.com/alpine/edge/community' >> /etc/apk/repositories && \
-    PACKAGES="openjdk8-jre-base" && \
-    BUILD_PACKAGES="wget ca-certificates" && \
+    PACKAGES="openjdk8-jre-base ca-certificates bash" && \
+    BUILD_PACKAGES="wget" && \
 # packages
     apk add --update $PACKAGES $BUILD_PACKAGES && \
 # download
@@ -17,7 +17,7 @@ RUN echo 'http://alpine.gliderlabs.com/alpine/v3.2/main' > /etc/apk/repositories
     mkdir -p /opt && \
     mv /tmp/jruby-$JRUBY_VERSION /opt/jruby && \
 # symlink ruby
-    ln -s /opt/jruby/bin/jruby.sh /usr/local/bin/ruby && \
+    ln -s /opt/jruby/bin/jruby /usr/local/bin/ruby && \
 # clean up
     apk del $BUILD_PACKAGES && \
     rm -rf /var/cache/apk/* /tmp/*
