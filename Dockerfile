@@ -1,11 +1,11 @@
-FROM justcontainers/base-alpine:latest
+FROM develar/java:latest
 
 ENV JRUBY_VERSION="9.0.4.0" \
     PATH="/opt/jruby/bin:$PATH"
 
 RUN echo 'http://alpine.gliderlabs.com/alpine/v3.2/main' > /etc/apk/repositories && \
     echo 'http://alpine.gliderlabs.com/alpine/edge/community' >> /etc/apk/repositories && \
-    PACKAGES="openjdk8-jre-base ca-certificates bash" && \
+    PACKAGES="ca-certificates bash" && \
     BUILD_PACKAGES="wget" && \
 # packages
     apk add --update $PACKAGES $BUILD_PACKAGES && \
