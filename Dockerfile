@@ -1,7 +1,9 @@
 FROM develar/java:latest
 
-ENV JRUBY_VERSION="9.0.4.0" \
-    PATH="/opt/jruby/bin:$PATH"
+ENV JRUBY_VERSION="1.7.23" \
+    PATH="/opt/jruby/bin:$PATH" \
+    LC_ALL="en_US.UTF-8" \
+    LANG="en_US.UTF-8"
 
 RUN echo 'http://alpine.gliderlabs.com/alpine/v3.2/main' > /etc/apk/repositories && \
     echo 'http://alpine.gliderlabs.com/alpine/edge/community' >> /etc/apk/repositories && \
